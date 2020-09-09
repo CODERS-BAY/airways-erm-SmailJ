@@ -9,3 +9,28 @@ Before starting the flight, the passenger will be given a boarding card at the a
 (row as number, seat as letter, e.g. 18D) and a smoking or non-smoking license plate appears. The non-smoking seats are assigned on each flight starting from the front of the aircraft, the smoking seats starting from the rear. Seating arrangements depend on the type of aircraft on which the flight is performed. For each seat the class (First Class 1 Economy) and location (window, aisle, middle) are
 to hold on to.
 For each flight, it must also be possible to record the actual take-off and landing time in order to be able to make evaluations of the punctuality of individual flights.
+
+
+# Ready
+
+Passenger (PID: int, Name: varchar, Gender: char, Titel: varchar)
+
+Flight (PID, SAirport: varchar, TAirport: varchar, Daten: date, Time: time)
+
+Flight_Corp (FID: varchar, Name: varchar, Headquarter: varchar, FNum)
+
+Planes (PlaneID: int, RegID: int, Name: varchar, Date: date, Typ: varchar, Manufacturer: varchar, Reach: int, Smoker: varchar, Rows: int, SeatID: char, Class: varchar)
+
+Airports (AID: varchar, Name: varchar, City: varchar, Country: varchar, Capacity: int)
+
+Distance (AID, AID, Dis: int)
+
+Flightplan (AID, AID, Dis, Time: time)
+
+Flight_Num (FNum: varchar, STime: time, LTime: time, Date: date, Booked: int, Free: int)
+
+Ticket (TID: int, Date: date, Cost: int, Currency: char, SaleOffice: varchar,)
+
+BoardTicket (FNum, Datum: date, SAirport, TAirport, Name: varchar, Row, SeatID, Smoker: varchar, Class)
+
+![Photo](photo.jpg)
