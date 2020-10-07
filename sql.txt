@@ -1,0 +1,93 @@
+CREATE TABLE passenger (
+    PID int PRIMARY KEY,
+    name varchar (50),
+    gender char,
+    titel varchar (50)
+);
+
+CREATE TABLE flight (
+    PID int PRIMARY KEY,
+    SAairport varchar (50),
+    TAairport varchar (50),
+    date date,
+    time time,
+    FOREIGN KEY (PID) REFERENCES passenger(PID)
+);
+
+CREATE TABLE planes (
+    PlaneID int PRIMARY KEY,
+    RegID int,
+    name varchar (50),
+    date date,
+    typ varchar (50),
+    manufactur varchar (50),
+    reach int,
+    smoker varchar (50),
+    rows int,
+    seatID char,
+    class varchar (50)
+);
+
+CREATE TABLE airports (
+    AID varchar (50) PRIMARY KEY,
+    name varchar (50),
+    city varchar (50),
+    country varchar (50),
+    capacity INT
+);
+
+CREATE TABLE distance (
+    AID varchar (50),
+    dis int PRIMARY KEY,
+    FOREIGN KEY (AID) REFERENCES airports (AID)
+);
+
+CREATE TABLE flightplan (
+    SAirport varchar (50),
+    LAirport varchar (50),
+    dis int,
+    time time,
+    FOREIGN KEY (SAirport) REFERENCES airports (AID),
+    FOREIGN KEY (LAirport) REFERENCES airports (AID),
+    FOREIGN KEY (dis) REFERENCES distance (dis)
+);
+
+CREATE TABLE Flight_Num (
+    FNum varchar (50) PRIMARY KEY,
+    STime time,
+    LTime time,
+    date date,
+    booked int,
+    free INT
+);
+
+CREATE TABLE ticket (
+    TID int PRIMARY KEY,
+    date date,
+    cost float,
+    currency char,
+    SaleOffice varchar (50)
+);
+
+CREATE TABLE flight_corp (
+    FID varchar (50) PRIMARY KEY,
+    name varchar (50),
+    headquarter varchar (50),
+    FNum varchar (50),
+    FOREIGN KEY (FNum) REFERENCES Flight_Num (FNum)
+);
+
+CREATE TABLE BoardTicket (
+    FNum varchar (50) PRIMARY KEY,
+    date date,
+    SAirport varchar (50),
+    LAirport varchar (50),
+    name varchar (50),
+    rows int,
+    seatID char,
+    smoker varchar (50),
+    class varchar (50),
+    FOREIGN KEY (FNum) REFERENCES Flight_Num (FNum),
+    FOREIGN KEY (SAirport) REFERENCES airports (AID),
+    FOREIGN KEY (LAirport) REFERENCES airports (AID)
+);
